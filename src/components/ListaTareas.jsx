@@ -7,19 +7,22 @@ const ListaTareas = (props) => {
     console.log(tareas);
 
     const handleCheck = (tarea) => {
-        setTareas(tareas.map((tar) => {
+        const nuevoTar = tareas.map((tar) => {
             if (tar.id === tarea.id) {
                 return { ...tar, done: !tar.done }
             }
             return tar;
-        }))
+        })
+        setTareas(nuevoTar);
+        localStorage.setItem('tareas', JSON.stringify(nuevoTar));
     }
 
     const handleDelete = (tarea) => {
-        setTareas(tareas.filter((tar) => {
+        const nuevoTar = tareas.filter((tar) => {
             return tar.id !== tarea.id;
-        }));
-        localStorage.setItem('tareas', JSON.stringify(tareas));
+        });
+        setTareas(nuevoTar);
+        localStorage.setItem('tareas', JSON.stringify(nuevoTar));
     }
 
 

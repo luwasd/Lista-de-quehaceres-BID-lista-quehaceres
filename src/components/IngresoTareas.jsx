@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const IngresoTareas = (props) => {
 
@@ -7,13 +7,14 @@ const IngresoTareas = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setTareas([...tareas, {
+        const nuevoTar = [...tareas, {
             id: Math.random().toString(36).substr(2, 18),
             tarea: e.target.tarea.value,
             done: false
-        }])
+        }];
+        setTareas(nuevoTar);
         e.target.tarea.value = "";
-        localStorage.setItem('tareas', JSON.stringify(tareas));
+        localStorage.setItem('tareas', JSON.stringify(nuevoTar));
     }
 
     return (
